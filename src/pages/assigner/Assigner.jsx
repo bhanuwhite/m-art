@@ -6,7 +6,6 @@ import { Overlay, Popover } from "react-bootstrap";
 import "../../styles.css";
 import logo from "../../images/logo.png";
 import notificationImage from "../../images/notification.png";
-import { getApprovedPaintings } from "../../api/helpers";
 import ImageComponent from "./ImageComponent";
 
 const currentLoginUser = JSON.parse(localStorage.getItem("loginUserInfo"));
@@ -24,41 +23,23 @@ function Assigner() {
     setShowProfileOptions(!showProfileOptions);
     setTarget(event.target);
   };
-  const [selectedApprovedPainting, setSelectedApprovedPainting] = useState(undefined);
+  const [selectedApprovedPainting, setSelectedApprovedPainting] =
+    useState(undefined);
   const handleSignout = () => {
     localStorage.clear();
     window.location.reload();
   };
 
   const getSelectedPainting = () => {
-    return _.find(approvedPaintings, (eachPainting) => eachPainting.id === _.get(selectedApprovedPainting, "value"));
-  };
-
-  const getApprovedPaintingsQuery = () => {
-    setLoading(true);
-    setError(false);
-    getApprovedPaintings()
-      .then((res) => {
-        return res.data;
-      })
-      .then((result) => {
-        setLoading(false);
-        setError(false);
-        const firstData = _.get(result, "data")[1];
-        setSelectedApprovedPainting({ label: _.get(firstData, "name"), value: _.get(firstData, "id") });
-        setApprovedPaintings(
-          _.filter(_.get(result, "data", []), (eachResult) => eachResult.isAvailable && eachResult.status === "approve")
-        );
-      })
-      .catch((err) => {
-        setLoading(false);
-        setError(true);
-        console.log(err);
-      });
+    return _.find(
+      approvedPaintings,
+      (eachPainting) =>
+        eachPainting.id === _.get(selectedApprovedPainting, "value")
+    );
   };
 
   useEffect(() => {
-    getApprovedPaintingsQuery();
+    // getApprovedPaintingsQuery();
   }, []);
   // if (error) {
   //   return (
@@ -89,12 +70,20 @@ function Assigner() {
                 containerPadding={10}
               >
                 <Popover id="popover-basic">
-                  <Popover.Body className="cursor_pointer text-danger" onClick={handleSignout}>
+                  <Popover.Body
+                    className="cursor_pointer text-danger"
+                    onClick={handleSignout}
+                  >
                     Logout
                   </Popover.Body>
                 </Popover>
               </Overlay>
-              <img src={notificationImage} alt="Notification" className="cursor_pointer" onClick={handleClick} />
+              <img
+                src={notificationImage}
+                alt="Notification"
+                className="cursor_pointer"
+                onClick={handleClick}
+              />
             </div>
             <p>{_.get(currentLoginUser, "name")}</p>
             <h4>
@@ -148,8 +137,12 @@ function Assigner() {
                   >
                     <div className="art-enroll-card-content-front">
                       <div className="art-enroll-card-content-left">
-                        <p className="art-enroll-sub">{_.get(getSelectedPainting(), "name", "")}</p>
-                        <ImageComponent selectedPainting={getSelectedPainting()} />
+                        <p className="art-enroll-sub">
+                          {_.get(getSelectedPainting(), "name", "")}
+                        </p>
+                        <ImageComponent
+                          selectedPainting={getSelectedPainting()}
+                        />
                         <p>
                           Image ID :{" "}
                           <span>
@@ -167,9 +160,15 @@ function Assigner() {
                           </p>
                         </div>
                         <p className="artist">
-                          Artist: <span>{_.get(getSelectedPainting(), "artistName", "")}</span>
+                          Artist:{" "}
+                          <span>
+                            {_.get(getSelectedPainting(), "artistName", "")}
+                          </span>
                         </p>
-                        <button className="more" onClick={() => setIsFlipped(true)}>
+                        <button
+                          className="more"
+                          onClick={() => setIsFlipped(true)}
+                        >
                           More.
                         </button>
                       </div>
@@ -178,13 +177,16 @@ function Assigner() {
                       <div className="art-enroll-card-content-left">
                         <div className="art-enroll-card-content-left-inside">
                           <p>
-                            <b>Original Registry:</b> Martinez Gallery, BOGOTOA ,COLOMBIA
+                            <b>Original Registry:</b> Martinez Gallery, BOGOTOA
+                            ,COLOMBIA
                           </p>
                           <p>
-                            <b>Currently Owned By:</b> Margaret Anne Smith New York, NY 10016 USA
+                            <b>Currently Owned By:</b> Margaret Anne Smith New
+                            York, NY 10016 USA
                           </p>
                           <p>
-                            <b>Last Verified Loc:</b> 40°44'46.51" N, 73°58'52.43"
+                            <b>Last Verified Loc:</b> 40°44'46.51" N,
+                            73°58'52.43"
                           </p>
                         </div>
                         <div className="divider"></div>
@@ -194,12 +196,18 @@ function Assigner() {
                         <button className="original">Original</button>
 
                         <p className="artist">
-                          Artist: <span>{_.get(getSelectedPainting(), "artistName", "")}</span>
+                          Artist:{" "}
+                          <span>
+                            {_.get(getSelectedPainting(), "artistName", "")}
+                          </span>
                         </p>
                         <p className="artist">
                           Enrolled: <span>April 15, 2018</span>
                         </p>
-                        <button className="more" onClick={() => setIsFlipped(false)}>
+                        <button
+                          className="more"
+                          onClick={() => setIsFlipped(false)}
+                        >
                           Back
                         </button>
                       </div>
@@ -215,8 +223,8 @@ function Assigner() {
                 </div>
                 <div>
                   <p>
-                    Using an Android or IoS SmartPhone, scan the NFC tag at the back of the artwork.{" "}
-                    <b>This can be done only once.</b>
+                    Using an Android or IoS SmartPhone, scan the NFC tag at the
+                    back of the artwork. <b>This can be done only once.</b>
                   </p>
                 </div>
               </div>
@@ -227,17 +235,18 @@ function Assigner() {
                   </div>
                 ) : _.size(approvedPaintings) ? (
                   <ImageComponent selectedPainting={getSelectedPainting()} />
-                  
                 ) : null}
                 <p className="artenroll-id">ArtEnroll ID BA323EV6</p>
                 <p>
-                  Success! Your artwork has been authenticated, validated and enrolled in the the Art enRoll global
-                  network.
+                  Success! Your artwork has been authenticated, validated and
+                  enrolled in the the Art enRoll global network.
                 </p>
               </div>
             </div>
             <div className="enquiry-block">
-              <div className="enquiry-block-left">Offered at: $ {_.get(getSelectedPainting(), "price", "")}</div>
+              <div className="enquiry-block-left">
+                Offered at: $ {_.get(getSelectedPainting(), "price", "")}
+              </div>
               <div className="enquiry-block-right">
                 <button>Inquire</button>
                 <button className="green-text">Acquire</button>
