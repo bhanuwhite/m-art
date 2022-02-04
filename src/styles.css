@@ -243,31 +243,6 @@
   font-size: 13px;
 }
 
-.enquiry-block {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 10px;
-  border: 1px solid #797979;
-  border-radius: 5px;
-  font-size: 13px;
-  font-style: italic;
-}
-
-.enquiry-block-left {
-  width: 50%;
-  border-right: 1px solid #797979;
-}
-
-.enquiry-block-right button {
-  background: #169bd5;
-  color: #fff;
-  border: 0px;
-  padding: 2px 0px;
-  width: 70px;
-  border-radius: 10px;
-}
-
 .green-text {
   color: rgba(0, 255, 0, 1) !important;
 }
