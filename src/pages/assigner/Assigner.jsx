@@ -52,7 +52,7 @@ function Assigner() {
   // }
 
   return (
-    <div className="col-12 col-lg-5 col-xl-6 art-container">
+    <div className="col-12 col-lg-3 col-xl-3 art-container">
       <h6>AUTHENTICATOR</h6>
       <img src={logo} alt="Art enRoll Logo" className="art-enroll-logoImg" />
       <h5 className="py-2">

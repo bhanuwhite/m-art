@@ -72,7 +72,7 @@
     width: 100%;
   }
   .art-enroll-scan {
-    /* width: 50%; */
+    width: 100%;
     margin: auto;
   }
 }
@@ -99,11 +99,11 @@
 .art-enroll-card-content-left {
   width: 60%;
   text-align: center;
-  border-right: 1px solid #ccc;
 }
 .art-enroll-card-content-right {
   width: 40%;
   text-align: center;
+  border-left: 1px solid black;
 }
 .art-enroll-card-content-left p {
   font-size: 13px;
