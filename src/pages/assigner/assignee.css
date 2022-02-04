@@ -1,0 +1,222 @@
+.art-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: auto;
+  padding: 15px;
+}
+.art-enroll-header {
+  margin: 0;
+  height: auto;
+}
+.art-enroll-logoImg {
+  width: 170px;
+} /*art-enroll-NtagImg starting */
+.art-enroll-NtagImg img {
+  width: 140px;
+  height: 45px;
+  text-align: center;
+}
+.error-box {
+  height: 200px !important;
+}
+.error-box > h3 {
+  padding: 35px 10px;
+  border: 2px solid;
+  border-radius: 18px;
+}
+.enquiry-oil-canvas {
+  border: 1px solid black;
+}
+.enquiry-oil-canvas-left {
+  border: 1px solid black;
+}
+.art-enroll-card-content-front {
+  box-shadow: rgb(0 0 0 / 35%) 0px 5px 15px;
+}
+.artenroll-id {
+  color: #1e98d7;
+  font-weight: 500;
+  margin-bottom: 5px;
+  font-size: 14px !important;
+}
+.loader_container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.loader {
+  border: 5px solid #f3f3f3;
+  border-radius: 50%;
+  border-top: 5px solid #3498db;
+  width: 30px;
+  height: 30px;
+  -webkit-animation: loadspin 2s linear infinite; /* Safari */
+  animation: loadspin 2s linear infinite;
+}
+.art-enroll-scan p {
+  font-size: 13px;
+}
+.green-text {
+  color: rgba(0, 255, 0, 1) !important;
+}
+@media only screen and (max-device-width: 767px) {
+  .art-enroll-content {
+    width: 100%;
+    padding: 10px 15px;
+  }
+  .art-enroll-date {
+    width: 75%;
+  }
+  .art-enroll-card-content-left-inside {
+    width: 100%;
+  }
+  .art-enroll-scan {
+    /* width: 50%; */
+    margin: auto;
+  }
+}
+.art-enroll-card-content {
+  /* min-height: 260px; */
+  height: auto;
+}
+.art-enroll-card-content-front {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 5px;
+  border: 1px solid #797979;
+  border-radius: 8px;
+}
+.art-enroll-card-content-back {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 5px;
+  border: 1px solid #797979;
+  border-radius: 8px;
+}
+.art-enroll-card-content-left {
+  width: 60%;
+  text-align: center;
+  border-right: 1px solid #ccc;
+}
+.art-enroll-card-content-right {
+  width: 40%;
+  text-align: center;
+}
+.art-enroll-card-content-left p {
+  font-size: 13px;
+  margin-bottom: 5px;
+}
+.artist {
+  font-size: 13px;
+}
+.more {
+  font-size: 12px;
+  font-weight: 500;
+  border: none;
+  background: rgba(51, 51, 51, 0.81);
+  color: rgba(0, 255, 0, 1);
+  padding: 0px 30px; /* line-height: 10px; */
+  border-radius: 7px;
+}
+.art-enroll-card-content-left img {
+  width: 50%;
+  max-height: 200px;
+  object-fit: contain;
+}
+.art-enroll-sub {
+  color: rgba(51, 51, 51, 0.81);
+  font-size: 13px;
+  font-weight: 500;
+  font-style: italic;
+  margin-bottom: 10px;
+}
+.original {
+  margin-bottom: 8px;
+  font-size: 12px;
+  font-weight: 500;
+  border: none;
+  background-color: rgba(1, 0, 51, 0.85);
+  color: rgba(0, 255, 0, 1);
+  padding: 5px 30px; /* line-height: 10px; */
+  border-radius: 7px;
+}
+.art-enroll-date {
+  font-size: 12px;
+  color: #797979;
+  width: 45%;
+  margin: auto;
+  line-height: 14px;
+  padding: 10px;
+  font-style: italic;
+}
+.artist {
+  font-size: 13px;
+}
+.artist span {
+  display: block;
+  color: #000;
+  text-decoration: none;
+  font-weight: 600;
+}
+@media only screen and (min-device-width: 768px) and (max-device-width: 1024px) {
+  .art-enroll-content {
+    width: 100%;
+    padding: 10px 15px;
+  }
+  .art-enroll-date {
+    width: 42%;
+  }
+  .art-enroll-card-content-left-inside {
+    width: 43%;
+  }
+} /* Oil Card Styles */
+.oil-card {
+  border: 1px solid #797979;
+  border-radius: 5px;
+  width: 100%;
+  margin: 10px;
+  box-shadow: rgb(0 0 0 / 35%) 0px 5px 15px;
+}
+.oil-card-left-text {
+  border-right: 1px solid #797979;
+}
+.oil-card-left-text,
+.oil-card-right-text {
+  padding: 10px;
+}
+.oil-card-right {
+  padding: 0 !important;
+  color: #7f7f7f;
+}
+/* Footer Buttons */
+.enquiry-block {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border: 1px solid #797979;
+  border-radius: 5px;
+  font-size: 13px;
+  font-style: italic;
+}
+.enquiry-block-left {
+  padding: 10px;
+  width: 50%;
+  border-right: 1px solid #797979;
+}
+.enquiry-block-right {
+  display: flex;
+  justify-content: space-around;
+}
+.enquiry-block-right button {
+  background: #169bd5;
+  color: #fff;
+  border: 0px;
+  padding: 2px 10px;
+  border-radius: 5px; /* margin-right: 5px; */
+  min-width: 80px;
+  width: 50%;
+  margin: 0 5px;
+}
