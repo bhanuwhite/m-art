@@ -6,7 +6,6 @@ import logo from "../../images/logo.png";
 import logo1 from "../../images/logo1.png";
 import ImageComponent from "./ImageComponent";
 import "./assignee.css";
-import { paintings } from "./data";
 
 function Assigner() {
   const [isFlipped, setIsFlipped] = useState(false);
@@ -89,7 +88,7 @@ function Assigner() {
                       <button className="original">Original</button>
                       <div className="art-enroll-date">
                         <p className="mb-2">
-                          Enrolled: <br /> {approvedPaintings.updatedAt}
+                          Enrolled: <br /> Oct 19, 2021 7:10:15 PM
                         </p>
                       </div>
                       <p className="artist">
@@ -129,7 +128,7 @@ function Assigner() {
                         <span>{approvedPaintings.artistName}</span>
                       </p>
                       <p className="artist">
-                        Enrolled: <span>{approvedPaintings.updatedAt}</span>
+                        Enrolled: <span>April 15, 2018</span>
                       </p>
                       <button
                         className="more"
@@ -151,7 +150,7 @@ function Assigner() {
             </div>
             <div className="col-7 oil-card-right">
               <div className="oil-card-right-text">
-                <i className="m-0">{approvedPaintings.size} inch, framed</i>
+                <i className="m-0">24 in X 36 in, framed</i>
               </div>
             </div>
           </div>
@@ -166,6 +165,7 @@ function Assigner() {
               ) : null}
             </div>
           </div>
+
           <div className="row oil-card enquiry-block">
             <div className="col-5 oil-card-left">
               <div className="oil-card-left-text">
