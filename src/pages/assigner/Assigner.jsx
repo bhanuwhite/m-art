@@ -11,7 +11,7 @@ import { paintings } from "./data";
 function Assigner() {
   const [isFlipped, setIsFlipped] = useState(false);
   const [loading] = useState(false);
-  const [approvedPaintings] = useState(paintings);
+  const [approvedPaintings, setApprovePaintings] = useState({});
   const [error] = useState(false);
 
   /**
@@ -21,7 +21,7 @@ function Assigner() {
     let res = await fetch(`http://10.10.17.4:4000/artEnroll/connectStream`);
     let data = await res.json();
     var ws = new WebSocket(data.url, "json.webpubsub.azure.v1");
-    console.log(ws);
+
     ws.onopen = () => {
       ws.send(
         JSON.stringify({
@@ -34,7 +34,8 @@ function Assigner() {
       let message = JSON.parse(event.data);
       if (message.type === "message" && message.group === "stream") {
         setTimeout(() => {
-          // const updatedData = JSON.parse(message.data);
+          const updatedData = JSON.parse(message.data);
+          setApprovePaintings(updatedData);
         });
       }
     };
