@@ -1,11 +1,8 @@
 import { Fragment, useEffect, useRef, useState } from "react";
 import ReactCardFlip from "react-card-flip";
-import Select from "react-select";
 import _ from "lodash";
-import { Overlay, Popover } from "react-bootstrap";
 import "../../styles.css";
 import logo from "../../images/logo.png";
-import notificationImage from "../../images/notification.png";
 import ImageComponent from "./ImageComponent";
 import "./assignee.css";
 import { paintings } from "./data";
@@ -24,14 +21,38 @@ function Assigner() {
     setShowProfileOptions(!showProfileOptions);
     setTarget(event.target);
   };
+
+  /**
+   * Here is the code
+   */
+  var connectWebSocket = async () => {
+    let res = await fetch(`http://10.10.17.4:4000/artEnroll/connectStream`);
+    let data = await res.json();
+    var ws = new WebSocket(data.url, "json.webpubsub.azure.v1");
+    console.log(ws);
+    ws.onopen = () => {
+      ws.send(
+        JSON.stringify({
+          type: "joinGroup",
+          group: "stream",
+        })
+      );
+    };
+    ws.onmessage = (event) => {
+      let message = JSON.parse(event.data);
+      if (message.type === "message" && message.group === "stream") {
+        setTimeout(() => {
+          const updatedData = JSON.parse(message.data);
+        });
+      }
+    };
+  };
+
   const [selectedApprovedPainting, setSelectedApprovedPainting] = useState({
     value: 70,
     name: "TajMahal",
   });
-  const handleSignout = () => {
-    localStorage.clear();
-    window.location.reload();
-  };
+
   const getSelectedPainting = () => {
     return _.find(
       approvedPaintings,
@@ -41,15 +62,8 @@ function Assigner() {
   };
 
   useEffect(() => {
-    // getApprovedPaintingsQuery();
+    connectWebSocket();
   }, []);
-  // if (error) {
-  //   return (
-  //     <div className="vh-100 d-flex align-items-center">
-  //       <h3 className="text-danger text-center">Something went wrong</h3>
-  //     </div>
-  //   );
-  // }
 
   return (
     <div className="col-12 col-lg-5 col-xl-6 art-container">

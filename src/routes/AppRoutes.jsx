@@ -13,8 +13,8 @@ const AppRoutes = () => {
   return (
     <Router>
       <Routes>
-        <Route path="/assigner" element={<Assigner />} />
-        <Route path="/" element={<Navigate to={"/assigner"} />} />
+        {/* <Route path="/assigner" element={<Assigner />} /> */}
+        <Route path="/" element={<Assigner />} />
         <Route path="*" element={<div>No page</div>} />
       </Routes>
     </Router>
