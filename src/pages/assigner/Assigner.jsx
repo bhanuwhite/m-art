@@ -32,9 +32,11 @@ function Assigner() {
     };
     ws.onmessage = (event) => {
       let message = JSON.parse(event.data);
+
       if (message.type === "message" && message.group === "stream") {
+        console.log(message.data);
         setTimeout(() => {
-          const updatedData = JSON.parse(message.data);
+          const updatedData = message.data.findValues;
           setApprovePaintings(updatedData);
         });
       }
@@ -87,7 +89,7 @@ function Assigner() {
                       <button className="original">Original</button>
                       <div className="art-enroll-date">
                         <p className="mb-2">
-                          Enrolled: <br /> Oct 19, 2021 7:10:15 PM
+                          Enrolled: <br /> {approvedPaintings.updatedAt}
                         </p>
                       </div>
                       <p className="artist">
@@ -127,7 +129,7 @@ function Assigner() {
                         <span>{approvedPaintings.artistName}</span>
                       </p>
                       <p className="artist">
-                        Enrolled: <span>April 15, 2018</span>
+                        Enrolled: <span>{approvedPaintings.updatedAt}</span>
                       </p>
                       <button
                         className="more"
@@ -149,7 +151,7 @@ function Assigner() {
             </div>
             <div className="col-7 oil-card-right">
               <div className="oil-card-right-text">
-                <i className="m-0">24 in X 36 in, framed</i>
+                <i className="m-0">{approvedPaintings.size} inch, framed</i>
               </div>
             </div>
           </div>
@@ -167,7 +169,7 @@ function Assigner() {
           <div className="row oil-card enquiry-block">
             <div className="col-5 oil-card-left">
               <div className="oil-card-left-text">
-                <i className="m-0">Offered at: $ {approvedPaintings.price}</i>
+                <i className="m-0">Offered at: ${approvedPaintings.price}</i>
               </div>
             </div>
             <div className="col-7 oil-card-right ">
