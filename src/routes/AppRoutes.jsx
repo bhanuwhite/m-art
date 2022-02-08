@@ -15,6 +15,7 @@ const AppRoutes = () => {
       <Routes>
         {/* <Route path="/assigner" element={<Assigner />} /> */}
         <Route path="/" element={<Assigner />} />
+
         <Route path="*" element={<div>No page</div>} />
       </Routes>
     </Router>
