@@ -17,6 +17,10 @@
   height: 45px;
   text-align: center;
 }
+.artEnrollid_text {
+  font-weight: normal !important;
+  padding: 0 2px;
+}
 .error-box {
   height: 200px !important;
 }
@@ -72,9 +76,6 @@
   .art-enroll-date {
     width: 75%;
   }
-  .art-enroll-card-content-left-inside {
-    width: 100%;
-  }
 }
 .art-enroll-card-content {
   /* min-height: 260px; */
@@ -92,18 +93,19 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 5px;
+  padding: 0 5px;
   border: 1px solid #797979;
   border-radius: 8px;
 }
 .art-enroll-card-content-left {
   width: 60%;
+  height: 100%;
   text-align: center;
+  border-right: 1px solid black;
 }
 .art-enroll-card-content-right {
   width: 40%;
   text-align: center;
-  border-left: 1px solid black;
 }
 .art-enroll-card-content-left p {
   font-size: 13px;
@@ -116,6 +118,10 @@
   font-weight: normal;
 }
 .artist {
+  font-size: 13px !important;
+  margin: 0;
+}
+.artist-name {
   font-size: 13px;
 }
 .more {
