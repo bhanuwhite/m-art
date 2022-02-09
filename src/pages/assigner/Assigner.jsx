@@ -12,7 +12,7 @@ import moment from "moment";
 function Assigner() {
   const [isFlipped, setIsFlipped] = useState(false);
   const [loading] = useState(false);
-  const [approvedPaintings, setApprovePaintings] = useState(paintings);
+  const [approvedPaintings, setApprovePaintings] = useState({});
   const [error] = useState(false);
 
   /**
@@ -38,8 +38,8 @@ function Assigner() {
         console.log(message.data);
         setTimeout(() => {
           const updatedData = message.data.findValues;
-          console.log(updatedData);
-          // setApprovePaintings(updatedData);
+
+          setApprovePaintings(updatedData);
         });
       }
     };
