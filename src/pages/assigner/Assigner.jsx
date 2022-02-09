@@ -6,6 +6,8 @@ import logo from "../../images/logo.png";
 import logo1 from "../../images/logo1.png";
 import ImageComponent from "./ImageComponent";
 import "./assignee.css";
+import { paintings } from "./data";
+import moment from "moment";
 
 function Assigner() {
   const [isFlipped, setIsFlipped] = useState(false);
@@ -36,6 +38,7 @@ function Assigner() {
         console.log(message.data);
         setTimeout(() => {
           const updatedData = message.data.findValues;
+
           setApprovePaintings(updatedData);
         });
       }
@@ -44,6 +47,7 @@ function Assigner() {
 
   useEffect(() => {
     connectWebSocket();
+    console.log(paintings);
   }, []);
 
   return (
@@ -57,11 +61,9 @@ function Assigner() {
       <div className="art-enroll-NtagImg">
         <img id="u39_img" className="img" src={logo1} />
       </div>
-      {error ? (
-        <div className="d-flex align-items-center justify-content-center error-box">
-          <h3 className="text-danger text-center">Something went wrong</h3>
-        </div>
-      ) : (
+      {loading ? (
+        ""
+      ) : _.size(approvedPaintings) ? (
         <Fragment>
           <div className="art-enroll-card mt-4">
             <div className="art-enroll-card-content">
@@ -81,14 +83,20 @@ function Assigner() {
                       <p className="art-enroll-sub">{approvedPaintings.name}</p>
                       <ImageComponent selectedPainting={approvedPaintings} />
                       <p>
-                        Image ID :<span>{approvedPaintings.id}</span>
+                        ArtEnroll ID:
+                        <span>{approvedPaintings.artEnrollId}</span>
                       </p>
                     </div>
                     <div className="art-enroll-card-content-right">
                       <button className="original">Original</button>
                       <div className="art-enroll-date">
                         <p className="mb-2">
-                          Enrolled: <br /> Oct 19, 2021 7:10:15 PM
+                          Enrolled: <br />
+                          <p className="text-dark">
+                            {moment(approvedPaintings.createdAt).format(
+                              "MMMM Do YYYY, h:mm:ss a"
+                            )}
+                          </p>
                         </p>
                       </div>
                       <p className="artist">
@@ -119,7 +127,9 @@ function Assigner() {
                         </p>
                       </div>
                       <div className="divider"></div>
-                      <p className="uid">UID:{approvedPaintings.artEnrollId}</p>
+                      <p className="uid">
+                        ArtEnroll ID: {approvedPaintings.artEnrollId}
+                      </p>
                     </div>
                     <div className="art-enroll-card-content-right">
                       <button className="original">Original</button>
@@ -128,7 +138,12 @@ function Assigner() {
                         <span>{approvedPaintings.artistName}</span>
                       </p>
                       <p className="artist">
-                        Enrolled: <span>April 15, 2018</span>
+                        Enrolled:
+                        <span>
+                          {moment(approvedPaintings.createdAt).format(
+                            "MMMM Do ,YYYY"
+                          )}
+                        </span>
                       </p>
                       <button
                         className="more"
@@ -142,6 +157,7 @@ function Assigner() {
               ) : null}
             </div>
           </div>
+
           <div className="row oil-card">
             <div className="col-5 oil-card-left">
               <div className="oil-card-left-text">
@@ -150,10 +166,11 @@ function Assigner() {
             </div>
             <div className="col-7 oil-card-right">
               <div className="oil-card-right-text">
-                <i className="m-0">24 in X 36 in, framed</i>
+                <i className="m-0">{approvedPaintings.size}in, framed</i>
               </div>
             </div>
           </div>
+
           <div className="art-enroll-card mt-4">
             <div className="art-enroll-scan">
               {loading ? (
@@ -179,6 +196,7 @@ function Assigner() {
               </div>
             </div>
           </div>
+
           <div className="row oil-card enquiry-block">
             <div className="col-5 oil-card-left">
               <div className="oil-card-left-text">
@@ -193,6 +211,10 @@ function Assigner() {
             </div>
           </div>
         </Fragment>
+      ) : (
+        <div className="alert alert-danger my-5" role="alert">
+          <p className="text-danger m-0">Something went wrong ...</p>
+        </div>
       )}
     </div>
   );
