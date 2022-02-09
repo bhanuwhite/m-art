@@ -99,15 +99,21 @@
 .art-enroll-card-content-left {
   width: 60%;
   text-align: center;
-  border-right: 1px solid #ccc;
 }
 .art-enroll-card-content-right {
   width: 40%;
   text-align: center;
+  border-left: 1px solid black;
 }
 .art-enroll-card-content-left p {
   font-size: 13px;
-  margin-bottom: 5px;
+  font-weight: bold;
+  margin-top: 5px;
+}
+.art-enroll-card-content-left span {
+  padding: 0 2px;
+  font-size: 13px;
+  font-weight: normal;
 }
 .artist {
   font-size: 13px;
@@ -122,7 +128,7 @@
   border-radius: 7px;
 }
 .art-enroll-card-content-left img {
-  width: 50%;
+  width: 60%;
   max-height: 200px;
   object-fit: contain;
 }
@@ -145,6 +151,7 @@
 }
 .art-enroll-date {
   font-size: 12px;
+  font-weight: bold;
   color: #797979;
   width: 45%;
   margin: auto;
@@ -166,9 +173,7 @@
     width: 100%;
     padding: 10px 15px;
   }
-  .art-enroll-date {
-    width: 42%;
-  }
+
   .art-enroll-card-content-left-inside {
     width: 43%;
   }

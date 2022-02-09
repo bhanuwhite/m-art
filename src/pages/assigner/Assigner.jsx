@@ -47,6 +47,7 @@ function Assigner() {
 
   useEffect(() => {
     connectWebSocket();
+    console.log(paintings);
   }, []);
 
   return (
@@ -91,9 +92,11 @@ function Assigner() {
                       <div className="art-enroll-date">
                         <p className="mb-2">
                           Enrolled: <br />
-                          {moment(approvedPaintings.createdAt).format(
-                            "MMMM Do YYYY, h:mm:ss a"
-                          )}
+                          <p className="text-dark">
+                            {moment(approvedPaintings.createdAt).format(
+                              "MMMM Do YYYY, h:mm:ss a"
+                            )}
+                          </p>
                         </p>
                       </div>
                       <p className="artist">
@@ -125,7 +128,7 @@ function Assigner() {
                       </div>
                       <div className="divider"></div>
                       <p className="uid">
-                        ArtEnroll ID:{approvedPaintings.artEnrollId}
+                        ArtEnroll ID: {approvedPaintings.artEnrollId}
                       </p>
                     </div>
                     <div className="art-enroll-card-content-right">
@@ -135,7 +138,7 @@ function Assigner() {
                         <span>{approvedPaintings.artistName}</span>
                       </p>
                       <p className="artist">
-                        Enrolled:{" "}
+                        Enrolled:
                         <span>
                           {moment(approvedPaintings.createdAt).format(
                             "MMMM Do ,YYYY"
@@ -154,22 +157,19 @@ function Assigner() {
               ) : null}
             </div>
           </div>
-          {loading ? (
-            ""
-          ) : _.size(approvedPaintings) ? (
-            <div className="row oil-card">
-              <div className="col-5 oil-card-left">
-                <div className="oil-card-left-text">
-                  <i className="m-0">Oil on Canvas</i>
-                </div>
-              </div>
-              <div className="col-7 oil-card-right">
-                <div className="oil-card-right-text">
-                  <i className="m-0">{approvedPaintings.size}in, framed</i>
-                </div>
+
+          <div className="row oil-card">
+            <div className="col-5 oil-card-left">
+              <div className="oil-card-left-text">
+                <i className="m-0">Oil on Canvas</i>
               </div>
             </div>
-          ) : null}
+            <div className="col-7 oil-card-right">
+              <div className="oil-card-right-text">
+                <i className="m-0">{approvedPaintings.size}in, framed</i>
+              </div>
+            </div>
+          </div>
 
           <div className="art-enroll-card mt-4">
             <div className="art-enroll-scan">
@@ -182,44 +182,34 @@ function Assigner() {
               ) : null}
             </div>
           </div>
-          {loading ? (
-            ""
-          ) : _.size(approvedPaintings) ? (
-            <div className="row oil-card enquiry-block">
-              <div className="col-5 oil-card-left">
-                <div className="oil-card-left-text">
-                  <i className="m-0">Offered at: ${approvedPaintings.price}</i>
-                </div>
-              </div>
-              <div className="col-7 oil-card-right ">
-                <div className="enquiry-block-right">
-                  <button>Make Offer</button>
-                  <button className="green-text">Acquire</button>
-                </div>
+
+          <div className="row oil-card enquiry-block">
+            <div className="col-5 oil-card-left">
+              <div className="oil-card-left-text">
+                <i className="m-0">Offered at: ${approvedPaintings.price}</i>
               </div>
             </div>
-          ) : (
-            ""
-          )}
-          {loading ? (
-            ""
-          ) : _.size(approvedPaintings) ? (
-            <div className="row oil-card enquiry-block">
-              <div className="col-5 oil-card-left">
-                <div className="oil-card-left-text">
-                  <i className="m-0">For more info</i>
-                </div>
-              </div>
-              <div className="col-7 oil-card-right">
-                <div className="enquiry-block-right">
-                  <button>Call</button>
-                  <button className="green-text">Email</button>
-                </div>
+            <div className="col-7 oil-card-right ">
+              <div className="enquiry-block-right">
+                <button>Make Offer</button>
+                <button className="green-text">Acquire</button>
               </div>
             </div>
-          ) : (
-            ""
-          )}
+          </div>
+
+          <div className="row oil-card enquiry-block">
+            <div className="col-5 oil-card-left">
+              <div className="oil-card-left-text">
+                <i className="m-0">For more info</i>
+              </div>
+            </div>
+            <div className="col-7 oil-card-right">
+              <div className="enquiry-block-right">
+                <button>Call</button>
+                <button className="green-text">Email</button>
+              </div>
+            </div>
+          </div>
         </Fragment>
       ) : (
         <div className="alert alert-danger my-5" role="alert">
